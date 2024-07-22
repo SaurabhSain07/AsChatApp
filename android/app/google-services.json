@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "386201021595",
+    "project_id": "aschatapp-6df22",
+    "storage_bucket": "aschatapp-6df22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386201021595:android:cac0dc64f8ca4d51ce6a3e",
+        "android_client_info": {
+          "package_name": "com.example.aschatapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDV-4nkMn8Q9clJEsQW2tFIm8Z7glA5yXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
