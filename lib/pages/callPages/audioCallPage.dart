@@ -16,17 +16,15 @@ class AudioCallPage extends StatelessWidget {
     ProfileController profileController=Get.put(ProfileController());
     ChatController chatController =Get.put(ChatController());
     var callId=chatController.getRoomId(target.id!);
-    return Column(
-      children: [
-        // ZegoUIKitPrebuiltCall(
-        // appID: ZegoCloudConfig.appId,
-        // appSign: ZegoCloudConfig.appSing,
-        // userID: profileController.currentUser.value.id ?? "root",
-        // userName: profileController.currentUser.value.name ?? "root",
-        // callID: callId,
-        // config: ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall(),
-        //   ),
-      ],
-    );
+    return 
+        ZegoUIKitPrebuiltCall(
+        appID: ZegoCloudConfig.appId,
+        appSign: ZegoCloudConfig.appSing,
+        userID: profileController.currentUser.value.id ?? "root",
+        userName: profileController.currentUser.value.name ?? "root",
+        callID: callId,
+        config: ZegoUIKitPrebuiltCallConfig.oneOnOneVoiceCall(),
+      );
+      
  }
 }

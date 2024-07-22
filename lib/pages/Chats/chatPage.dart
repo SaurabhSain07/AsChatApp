@@ -59,7 +59,6 @@ class ChatPage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Saurabh sain"),
                     Text(userModel.name ?? "User",
                      style: Theme.of(context).textTheme.bodyLarge,),
                      StreamBuilder(

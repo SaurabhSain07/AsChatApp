@@ -1,6 +1,8 @@
 import 'package:aschatapp/Model/userModel.dart';
+import 'package:aschatapp/pages/callPages/audioCallPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
@@ -16,7 +18,29 @@ class CallController extends GetxController{
     getCallsNotification().listen((List<CallModel> calllist) { 
       if (calllist.isNotEmpty) {
         var callData=calllist[0];
-        Get.snackbar(callData.callerName!, "Incoming Call");
+        Get.snackbar(
+          duration:const Duration(days: 1),
+          barBlur: 0,
+          backgroundColor: Colors.grey,
+          isDismissible: false,
+          icon:const Icon(Icons.call),
+          onTap: (snack){
+            Get.back();
+            Get.to(AudioCallPage(
+              target: UserModel(
+                id: callData.callerUid,
+                name: callData.callerName,
+                email: callData.callerEmail,
+                profileImage: callData.callerPic
+               ),),);
+          },
+          callData.callerName!, "Incoming Call",
+            mainButton: TextButton(
+                onPressed: () {
+                  endCall(callData);
+                  Get.back();
+                },
+                child: const Text("End Call")));
       }
     });
   }
