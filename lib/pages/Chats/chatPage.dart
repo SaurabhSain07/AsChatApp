@@ -9,6 +9,7 @@ import 'package:aschatapp/pages/Chats/Widgets/ChatBubble.dart';
 import 'package:aschatapp/pages/Chats/Widgets/messageType.dart';
 import 'package:aschatapp/pages/UserProfile/Profile.dart';
 import 'package:aschatapp/pages/callPages/audioCallPage.dart';
+import 'package:aschatapp/pages/callPages/videoCallPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -86,12 +87,18 @@ class ChatPage extends StatelessWidget {
               onPressed: () {
                 Get.to(AudioCallPage(target: userModel));
                 callController.CallAction(
-                    userModel, profileController.currentUser.value);
+                    userModel, profileController.currentUser.value, "audio");
               },
               icon: const Icon(Icons.call_sharp),
             ),
             IconButton(
-                onPressed: () {}, icon: const Icon(Icons.videocam_outlined))
+              onPressed: () {
+                Get.to(VideoCallPage(target: userModel));
+                callController.CallAction(
+                    userModel, profileController.currentUser.value, "video");
+              },
+              icon: const Icon(Icons.videocam_outlined),
+            )
           ],
         ),
     

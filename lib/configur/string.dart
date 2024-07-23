@@ -1,9 +1,9 @@
 class AppString {
-  static const appName = "VSChatApp";
+  static const appName = "ASChatApp";
 }
 
 class WelcomePageString {
-  static const appName = "VSChatApp";
+  static const appName = "ASChatApp";
   static const nowYouAre = "Now You Are";
   static const connected = "Connected";
   static const discription =

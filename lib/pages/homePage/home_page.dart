@@ -39,11 +39,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           IconButton(onPressed: () {
            contactController.getChatRoomList();
-          }, icon: Icon(Icons.search)),
+          }, icon:const Icon(Icons.search)),
           IconButton(onPressed: () {
             Get.to(ProfilePage());
           }, 
-          icon: Icon(Icons.more_vert)),
+          icon:const Icon(Icons.more_vert)),
         ],
         bottom: myTabBar(tabController, context),
       ),
@@ -52,7 +52,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         onPressed: () {
           Get.toNamed("/contactPage");
         },
-        child: Icon(Icons.add, color: Theme.of(context).colorScheme.onBackground,),
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).colorScheme.onBackground,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
