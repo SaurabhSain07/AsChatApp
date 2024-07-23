@@ -1,5 +1,6 @@
 import 'package:aschatapp/Controller/contactController.dart';
 import 'package:aschatapp/Controller/profileController.dart';
+import 'package:aschatapp/Model/AudioCall.dart';
 import 'package:aschatapp/Model/ChatModel.dart';
 import 'package:aschatapp/Model/ChatRoomModel.dart';
 import 'package:aschatapp/Model/userModel.dart';
@@ -123,5 +124,17 @@ class ChatController extends GetxController{
     return db.collection("users").doc(uid).snapshots().map((event) {
       return UserModel.fromJson(event.data()!);
     });
+  }
+  
+  Stream<List<CallModel>> getCalls(){
+    return 
+    db.collection("users")
+    .doc(auth.currentUser!.uid)
+    .collection("calls")
+    .orderBy("timestamp", descending: true)
+    .snapshots()
+    .map((snapshot) => snapshot.docs
+            .map((doc) => CallModel.fromJson(doc.data()))
+            .toList());
   }
 }

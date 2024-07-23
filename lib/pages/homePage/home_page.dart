@@ -3,6 +3,7 @@ import 'package:aschatapp/Controller/statusController.dart';
 import 'package:aschatapp/configur/images.dart';
 import 'package:aschatapp/configur/string.dart';
 import 'package:aschatapp/pages/Groups/GroupPage.dart';
+import 'package:aschatapp/pages/callHistory/callHistory.dart';
 import 'package:aschatapp/pages/homePage/widgets/chatList.dart';
 import 'package:aschatapp/pages/homePage/widgets/myTapBar.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           children: [
             ChatList(),
             GroupPage(),
-            Text("Calls Page"),
+            CallHistory()
           ]
           ),
       ),
