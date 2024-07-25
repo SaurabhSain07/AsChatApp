@@ -42,8 +42,8 @@ class ChatPage extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: userModel.profileImage ?? AssetsImage.defaultProfileImage,
                     fit: BoxFit.fill,
-                    placeholder: (context, url) =>const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>const Icon(Icons.error),
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ))),
           ),
@@ -148,24 +148,26 @@ class ChatPage extends StatelessWidget {
                       }
                     },
                    ),
-                  Obx(() => (chatController.selectedImagePath.value!="")? Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: Stack(
-                      children: [
-                        Container(
-                          margin:const EdgeInsets.only(bottom: 10),
-                          height: 500,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(image: FileImage(
-                              File(chatController.selectedImagePath.value)
-                             ),
-                             fit: BoxFit.fill
-                            ),
-                            color: Theme.of(context).colorScheme.primaryContainer,
-                            borderRadius: BorderRadius.circular(15)),
-                        ),
+                  Obx(() => (chatController.selectedImagePath.value != "")
+                        ? Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  margin: const EdgeInsets.only(bottom: 10),
+                                  height: 500,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: FileImage(File(chatController
+                                              .selectedImagePath.value)),
+                                          fit: BoxFit.fill),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primaryContainer,
+                                      borderRadius: BorderRadius.circular(15)),
+                                ),
                         Positioned(
                           right: 0,
                                     child: IconButton(

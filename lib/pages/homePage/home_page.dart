@@ -1,4 +1,6 @@
+import 'package:aschatapp/Controller/callController.dart';
 import 'package:aschatapp/Controller/contactController.dart';
+import 'package:aschatapp/Controller/imagePickerController.dart';
 import 'package:aschatapp/Controller/statusController.dart';
 import 'package:aschatapp/configur/images.dart';
 import 'package:aschatapp/configur/string.dart';
@@ -24,6 +26,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     TabController tabController = TabController(length: 3, vsync: this);
     ContactController contactController =Get.put(ContactController());
     StatusController statusController=Get.put(StatusController());
+    ImagePickerController imagePickerController =Get.put(ImagePickerController());
+    CallController callController=Get.put(CallController());
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -60,15 +64,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: TabBarView(
-          controller: tabController,
-          children: [
-            ChatList(),
-            GroupPage(),
-            CallHistory()
-          ]
-          ),
-      ),
+        
+          child: TabBarView(
+            controller: tabController,
+            children: [
+              ChatList(),
+              GroupPage(),
+              CallHistory()
+            ]
+            ),
+        ),
     );
   }
 }
