@@ -65,25 +65,21 @@ class ChatPage extends StatelessWidget {
                     Text(userModel.name ?? "User",
                      style: Theme.of(context).textTheme.bodyLarge,),
 
-                     SizedBox(
-                      height: 20,
-                      width: 70,
-                       child: StreamBuilder(
-                          stream: chatController.getStatus(userModel.id!),
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState==ConnectionState.waiting) {
-                              return Text("....");
-                            }
-                            return Text(
-                              snapshot.data!.status ?? "",
-                              style: TextStyle(
-                                  fontSize: 11,
-                                  color: snapshot.data!.status == "Online"
-                                      ? Colors.green
-                                      : Colors.grey),
-                            );
-                          }),
-                     ) 
+                     StreamBuilder(
+                        stream: chatController.getStatus(userModel.id!),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState==ConnectionState.waiting) {
+                            return Text("....");
+                          }
+                          return Text(
+                            snapshot.data!.status ?? "",
+                            style: TextStyle(
+                                fontSize: 11,
+                                color: snapshot.data!.status == "Online"
+                                    ? Colors.green
+                                    : Colors.grey),
+                          );
+                        }) 
                   ],
                 ),
               ],

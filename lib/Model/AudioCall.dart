@@ -10,7 +10,7 @@ class CallModel {
   String? receiverEmail;
   String? status;
   String? type;
-  String? time;
+  // String? time;
   String? timestamp;
 
   CallModel({
@@ -25,7 +25,7 @@ class CallModel {
     this.receiverEmail,
     this.status,
     this.type,
-    this.time,
+    // this.time,
     this.timestamp,
   });
 
@@ -41,7 +41,7 @@ class CallModel {
     receiverEmail = json["receiverEmail"];
     status = json["status"];
     type = json["type"];
-    type = json["time"];
+    // type = json["time"];
     timestamp = json["timestamp"];
   }
 
@@ -58,7 +58,7 @@ class CallModel {
     _data["receiverEmail"] = receiverEmail;
     _data["status"] = status;
     _data["type"] = type;
-    _data["time"] = time;
+    // _data["time"] = time;
     _data["timestamp"] = timestamp;
     return _data;
   }

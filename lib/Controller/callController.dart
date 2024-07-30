@@ -17,63 +17,37 @@ class CallController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-
     getCallsNotification().listen((List<CallModel> callList) {
       if (callList.isNotEmpty) {
         var callData = callList[0];
-        Get.snackbar(
-          barBlur: 0,
-          backgroundColor: Colors.grey,
-          isDismissible: false,
-          icon: Icon(Icons.call),
-          onTap: (snack) {
-          Get.to(
-            AudioCallPage(
-              target: UserModel(
-                  id: callData.callerUid,
-                  name: callData.callerName,
-                  email: callData.callerEmail,
-                  profileImage: callData.callerPic),
-            ),
-          );
-          Get.back();
-        },
-          duration: Duration(days: 1),
-          callData.callerName!, "Incoming Call",
-            mainButton:
-                TextButton(onPressed: () {
-                  endCall(callData);
-                  Get.back();
-                }, child: const Text("Call end")));
-        // if (callData.type == "audio") {
-        //   audioCallNotification(callData);
-        // } else if (callData.type == "video") {
-        //   videoCallNotification(callData);
-        // }
+        if (callData.type == "audio") {
+          audioCallNotification(callData);
+        } else if (callData.type == "video") {
+          videoCallNotification(callData);
+        }
       }
     });
   }
 
   Future<void> audioCallNotification(CallModel callData) async {
     Get.snackbar(
-      duration: Duration(days: 1),
       barBlur: 0,
-      backgroundColor: Colors.grey[900]!,
+      backgroundColor: Colors.grey,
       isDismissible: false,
       icon: Icon(Icons.call),
       onTap: (snack) {
-        Get.back();
         Get.to(
           AudioCallPage(
             target: UserModel(
-              id: callData.callerUid,
-              name: callData.callerName,
-              email: callData.callerEmail,
-              profileImage: callData.callerPic,
-            ),
+                id: callData.callerUid,
+                name: callData.callerName,
+                email: callData.callerEmail,
+                profileImage: callData.callerPic),
           ),
         );
+        Get.back();
       },
+      duration: Duration(days: 1),
       callData.callerName!,
       "Incoming Audio Call",
       mainButton: TextButton(
@@ -81,7 +55,7 @@ class CallController extends GetxController {
           endCall(callData);
           Get.back();
         },
-        child: Text("End Call"),
+        child: const Text("Call end"),
       ),
     );
   }
@@ -103,7 +77,7 @@ class CallController extends GetxController {
       receiverEmail: reciver.email,
       status: "dialing",
       type: type,
-      time: nowTime,
+      // time: nowTime,
       timestamp: DateTime.now().toString(),
     );
 
@@ -158,24 +132,23 @@ class CallController extends GetxController {
 
   void videoCallNotification(CallModel callData) {
     Get.snackbar(
-      duration: Duration(days: 1),
       barBlur: 0,
-      backgroundColor: Colors.grey[900]!,
+      backgroundColor: Colors.grey,
       isDismissible: false,
       icon: Icon(Icons.video_call),
       onTap: (snack) {
-        Get.back();
         Get.to(
           VideoCallPage(
             target: UserModel(
-              id: callData.callerUid,
-              name: callData.callerName,
-              email: callData.callerEmail,
-              profileImage: callData.callerPic,
-            ),
+                id: callData.callerUid,
+                name: callData.callerName,
+                email: callData.callerEmail,
+                profileImage: callData.callerPic),
           ),
         );
+        Get.back();
       },
+      duration: Duration(days: 1),
       callData.callerName!,
       "Incoming Video Call",
       mainButton: TextButton(
@@ -183,7 +156,7 @@ class CallController extends GetxController {
           endCall(callData);
           Get.back();
         },
-        child: Text("End Call"),
+        child: const Text("Call end"),
       ),
     );
   }
