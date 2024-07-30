@@ -56,27 +56,34 @@ class ChatPage extends StatelessWidget {
               ));
             },
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(userModel.name ?? "User",
                      style: Theme.of(context).textTheme.bodyLarge,),
-                     StreamBuilder(
-                        stream: chatController.getStatus(userModel.id!),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState==ConnectionState.waiting) {
-                            return Text(".......");
-                          }
-                          return Text(
-                            snapshot.data!.status ?? "",
-                            style: TextStyle(
-                                fontSize: 12,
-                                color: snapshot.data!.status == "Online"
-                                    ? Colors.green
-                                    : Colors.grey),
-                          );
-                        }) 
+
+                     SizedBox(
+                      height: 20,
+                      width: 70,
+                       child: StreamBuilder(
+                          stream: chatController.getStatus(userModel.id!),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState==ConnectionState.waiting) {
+                              return Text("....");
+                            }
+                            return Text(
+                              snapshot.data!.status ?? "",
+                              style: TextStyle(
+                                  fontSize: 11,
+                                  color: snapshot.data!.status == "Online"
+                                      ? Colors.green
+                                      : Colors.grey),
+                            );
+                          }),
+                     ) 
                   ],
                 ),
               ],
@@ -85,17 +92,17 @@ class ChatPage extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                Get.to(AudioCallPage(target: userModel));
-                callController.CallAction(
+                callController.callAction(
                     userModel, profileController.currentUser.value, "audio");
+                    Get.to(AudioCallPage(target: userModel));
               },
               icon: const Icon(Icons.call_sharp),
             ),
             IconButton(
               onPressed: () {
-                Get.to(VideoCallPage(target: userModel));
-                callController.CallAction(
+                callController.callAction(
                     userModel, profileController.currentUser.value, "video");
+                    Get.to(VideoCallPage(target: userModel));
               },
               icon: const Icon(Icons.videocam_outlined),
             )
@@ -103,7 +110,8 @@ class ChatPage extends StatelessWidget {
         ),
     
         body: Padding(
-          padding:const EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
+          padding:
+              const EdgeInsets.only(bottom: 10, top: 10, left: 10, right: 10),
           child: Column(
             children: [
               Expanded(

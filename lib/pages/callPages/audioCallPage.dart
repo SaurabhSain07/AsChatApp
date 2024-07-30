@@ -12,9 +12,9 @@ class AudioCallPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileController profileController=Get.put(ProfileController());
-    ChatController chatController =Get.put(ChatController());
-    var callId=chatController.getRoomId(target.id!);
+    ProfileController profileController = Get.put(ProfileController());
+    ChatController chatController = Get.put(ChatController());
+    var callId = chatController.getRoomId(target.id!);
     return ZegoUIKitPrebuiltCall(
         appID: ZegoCloudConfig.appId,
         appSign: ZegoCloudConfig.appSing,
