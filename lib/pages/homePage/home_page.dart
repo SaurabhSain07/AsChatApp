@@ -1,3 +1,4 @@
+import 'package:aschatapp/Controller/appController.dart';
 import 'package:aschatapp/Controller/callController.dart';
 import 'package:aschatapp/Controller/contactController.dart';
 import 'package:aschatapp/Controller/imagePickerController.dart';
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     StatusController statusController=Get.put(StatusController());
     ImagePickerController imagePickerController =Get.put(ImagePickerController());
     CallController callController=Get.put(CallController());
+    AppController appController = Get.put(AppController());
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -42,8 +44,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         actions: [
-          IconButton(onPressed: () {
-           contactController.getChatRoomList();
+          IconButton(
+            onPressed: () {
+              appController.checkUpdate();
+          //  contactController.getChatRoomList();
           }, icon:const Icon(Icons.search)),
           IconButton(onPressed: () {
             Get.to(ProfilePage());

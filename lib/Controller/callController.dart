@@ -34,7 +34,7 @@ class CallController extends GetxController {
       barBlur: 0,
       backgroundColor: Colors.grey,
       isDismissible: false,
-      icon: Icon(Icons.call),
+      icon:const Icon(Icons.call),
       onTap: (snack) {
         Get.to(
           AudioCallPage(
@@ -47,7 +47,7 @@ class CallController extends GetxController {
         );
         Get.back();
       },
-      duration: Duration(days: 1),
+      duration:const Duration(days: 1),
       callData.callerName!,
       "Incoming Audio Call",
       mainButton: TextButton(
@@ -135,7 +135,7 @@ class CallController extends GetxController {
       barBlur: 0,
       backgroundColor: Colors.grey,
       isDismissible: false,
-      icon: Icon(Icons.video_call),
+      icon:const Icon(Icons.video_call),
       onTap: (snack) {
         Get.to(
           VideoCallPage(
@@ -148,7 +148,7 @@ class CallController extends GetxController {
         );
         Get.back();
       },
-      duration: Duration(days: 1),
+      duration:const Duration(days: 1),
       callData.callerName!,
       "Incoming Video Call",
       mainButton: TextButton(

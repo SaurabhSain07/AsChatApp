@@ -42,8 +42,8 @@ class ChatPage extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: userModel.profileImage ?? AssetsImage.defaultProfileImage,
                     fit: BoxFit.fill,
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    placeholder: (context, url) =>const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>const Icon(Icons.error),
                   ),
                 ))),
           ),
@@ -69,7 +69,7 @@ class ChatPage extends StatelessWidget {
                         stream: chatController.getStatus(userModel.id!),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState==ConnectionState.waiting) {
-                            return Text("....");
+                            return const Text(".....");
                           }
                           return Text(
                             snapshot.data!.status ?? "",
