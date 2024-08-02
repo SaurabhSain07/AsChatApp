@@ -46,7 +46,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           IconButton(
             onPressed: () {
-              appController.checkUpdate();
+              appController.checkLatestVersion();
+              // appController.checkUpdate();
           //  contactController.getChatRoomList();
           }, icon:const Icon(Icons.search)),
           IconButton(onPressed: () {
