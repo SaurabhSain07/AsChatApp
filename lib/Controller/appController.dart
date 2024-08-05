@@ -56,7 +56,8 @@ class AppController extends GetxController {
     );
        }
       }else{
-        print("failed to fatch GitHub release status Code ${response.statusCode}");
+        print(
+          "failed to fatch GitHub release status Code ${response.statusCode}");
       }
   }
 

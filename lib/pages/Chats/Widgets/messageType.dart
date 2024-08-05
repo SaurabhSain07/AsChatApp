@@ -17,6 +17,7 @@ class MessageType extends StatelessWidget {
     TextEditingController messageController=TextEditingController();
     ImagePickerController imagePickerController=Get.put(ImagePickerController());
     RxString message="".obs;
+    // RxBool _isEmoji=false.obs;
     return Container(
           margin:const EdgeInsets.all(10),
           padding:const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
@@ -26,7 +27,9 @@ class MessageType extends StatelessWidget {
           child: Row(
             children: [
               InkWell(
-                onTap: (){},
+                onTap: (){
+                  // _isEmoji.value =! _isEmoji.value;
+                },
                 child: const Icon(
                   Icons.emoji_emotions_outlined,
                   color: Colors.white38,
@@ -81,6 +84,5 @@ class MessageType extends StatelessWidget {
           )
          );
   }
-
   
 }

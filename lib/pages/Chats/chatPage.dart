@@ -24,6 +24,7 @@ class ChatPage extends StatelessWidget {
     ChatController chatController=Get.put(ChatController());
     ProfileController profileController=Get.put(ProfileController());
     CallController callController=Get.put(CallController());
+    TextEditingController messageController=TextEditingController();
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -185,7 +186,23 @@ class ChatPage extends StatelessWidget {
                   ],
                 ),
               ),
-              MessageType(userModel: userModel,)
+              MessageType(userModel: userModel,),
+              
+
+              // SizedBox(
+              //   height: Get.height*.35,
+              //   child: EmojiPicker(
+              //     textEditingController: messageController,
+              //     config: Config(
+              //       emojiViewConfig: EmojiViewConfig(
+              //         emojiSizeMax: 28 *
+              //             (Platform.isIOS
+              //                 ? 1.20
+              //                 : 1.0),
+              //       ),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),

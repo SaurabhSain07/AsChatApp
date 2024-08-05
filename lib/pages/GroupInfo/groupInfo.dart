@@ -39,7 +39,10 @@ class GroupInfo extends StatelessWidget {
              const SizedBox(height: 20,),
              Padding(
                padding: const EdgeInsets.symmetric(horizontal: 10),
-               child: Text("Members", style: Theme.of(context).textTheme.labelMedium,),
+               child: Text(
+              "Members",
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
              ),
              const SizedBox(height: 10,),
              Padding(

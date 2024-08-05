@@ -53,6 +53,7 @@ dependencies:
   package_info_plus: ^8.0.0
   url_launcher: ^6.3.0
   firebase_messaging: ^15.0.4
+  zego_uikit_prebuilt_live_streaming: ^3.11.0
 
 dev_dependencies:
   flutter_test:

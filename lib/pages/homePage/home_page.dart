@@ -51,8 +51,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           IconButton(
             onPressed: () {
-              pushNotificationController
-                    .getFirebaseMessagingToken(ChatModel());
+              
+              // pushNotificationController
+                    // .getFirebaseMessagingToken(ChatModel());
               // appController.checkLatestVersion();
           }, icon:const Icon(Icons.search)),
           IconButton(onPressed: () {

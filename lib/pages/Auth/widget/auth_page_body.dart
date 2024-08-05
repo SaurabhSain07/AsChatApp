@@ -66,7 +66,7 @@ class AuthPageBody extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Text(
-                                    "Singup",
+                                    "SignUp",
                                     style:isLogin.value?Theme.of(context).textTheme.bodyLarge : Theme.of(context).textTheme.bodyLarge,
                                   ),
                                 ],

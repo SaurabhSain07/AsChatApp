@@ -2,6 +2,7 @@ import 'package:aschatapp/Model/AudioCall.dart';
 import 'package:aschatapp/Model/userModel.dart';
 import 'package:aschatapp/pages/callPages/audioCallPage.dart';
 import 'package:aschatapp/pages/callPages/videoCallPage.dart';
+import 'package:aschatapp/pages/callPages/videoStreaming.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -138,12 +139,14 @@ class CallController extends GetxController {
       icon:const Icon(Icons.video_call),
       onTap: (snack) {
         Get.to(
-          VideoCallPage(
+          LiveVideoStreaming(
             target: UserModel(
                 id: callData.callerUid,
                 name: callData.callerName,
                 email: callData.callerEmail,
-                profileImage: callData.callerPic),
+                profileImage: callData.callerPic,
+                
+                ), isHost: callData.callerUid!,
           ),
         );
         Get.back();
