@@ -1,8 +1,11 @@
 import 'package:aschatapp/Controller/appController.dart';
 import 'package:aschatapp/Controller/callController.dart';
+import 'package:aschatapp/Controller/chatController.dart';
 import 'package:aschatapp/Controller/contactController.dart';
 import 'package:aschatapp/Controller/imagePickerController.dart';
+import 'package:aschatapp/Controller/pushnotificationController.dart';
 import 'package:aschatapp/Controller/statusController.dart';
+import 'package:aschatapp/Model/ChatModel.dart';
 import 'package:aschatapp/configur/images.dart';
 import 'package:aschatapp/configur/string.dart';
 import 'package:aschatapp/pages/Groups/GroupPage.dart';
@@ -30,6 +33,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     ImagePickerController imagePickerController =Get.put(ImagePickerController());
     CallController callController=Get.put(CallController());
     AppController appController = Get.put(AppController());
+    PushNotificationController pushNotificationController =
+        Get.put(PushNotificationController());
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -46,9 +51,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           IconButton(
             onPressed: () {
-              appController.checkLatestVersion();
-              // appController.checkUpdate();
-          //  contactController.getChatRoomList();
+              pushNotificationController
+                    .getFirebaseMessagingToken(ChatModel());
+              // appController.checkLatestVersion();
           }, icon:const Icon(Icons.search)),
           IconButton(onPressed: () {
             Get.to(ProfilePage());
