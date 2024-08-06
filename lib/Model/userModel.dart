@@ -8,6 +8,7 @@ class UserModel {
   String? createdAt;
   String? lastOnlineStatus;
   String? status;
+  String? pushNotification;
   String? role;
 
   UserModel({
@@ -20,6 +21,7 @@ class UserModel {
     this.createdAt,
     this.lastOnlineStatus,
     this.status,
+    this.pushNotification,
     this.role,
   });
 
@@ -33,6 +35,7 @@ class UserModel {
     createdAt = json["CreatedAt"];
     lastOnlineStatus = json["LastOnlineStatus"];
     status = json["Status"];
+    pushNotification = json["PushNotification"];
     role = json["role"];
   }
 
@@ -47,6 +50,7 @@ class UserModel {
     _data["CreatedAt"] = createdAt;
     _data["LastOnlineStatus"] = lastOnlineStatus;
     _data["Status"] = status;
+    _data["PushNotification"] = pushNotification;
     _data["role"] = role;
     return _data;
   }

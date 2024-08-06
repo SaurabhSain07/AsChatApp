@@ -10,7 +10,6 @@ class ChatModel {
   String? videoUrl;
   String? audioUrl;
   String? documentUrl;
-  String? pushNotification;
   List<String>? reactions;
   List<dynamic>? replies;
 
@@ -26,7 +25,6 @@ class ChatModel {
       this.videoUrl,
       this.audioUrl,
       this.documentUrl,
-      this.pushNotification,
       this.reactions,
       this.replies});
 
@@ -63,9 +61,6 @@ class ChatModel {
     }
     if (json["documentUrl"] is String) {
       documentUrl = json["documentUrl"];
-    }
-    if (json["pushNotification"] is String) {
-      documentUrl = json["pushNotification"];
     }
     if (json["reactions"] is List) {
       reactions = json["reactions"] == null

@@ -136,5 +136,5 @@ class ChatController extends GetxController{
     .map((snapshot) => snapshot.docs
             .map((doc) => CallModel.fromJson(doc.data()))
             .toList());
-  }
+  } 
 }

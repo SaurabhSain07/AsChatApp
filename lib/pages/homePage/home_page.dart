@@ -33,8 +33,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     ImagePickerController imagePickerController =Get.put(ImagePickerController());
     CallController callController=Get.put(CallController());
     AppController appController = Get.put(AppController());
-    PushNotificationController pushNotificationController =
-        Get.put(PushNotificationController());
+    PushNotificationController pushNotificationController =Get.put(PushNotificationController());
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
@@ -51,9 +50,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         actions: [
           IconButton(
             onPressed: () {
-              
-              // pushNotificationController
-                    // .getFirebaseMessagingToken(ChatModel());
+              pushNotificationController
+                    .getFirebaseMessagingToken();
               // appController.checkLatestVersion();
           }, icon:const Icon(Icons.search)),
           IconButton(onPressed: () {
