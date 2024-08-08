@@ -1,19 +1,23 @@
 import 'dart:io';
 
+import 'package:aschatapp/Controller/EmojiPickerController.dart';
 import 'package:aschatapp/Controller/callController.dart';
 import 'package:aschatapp/Controller/chatController.dart';
 import 'package:aschatapp/Controller/profileController.dart';
 import 'package:aschatapp/Model/userModel.dart';
 import 'package:aschatapp/configur/images.dart';
 import 'package:aschatapp/pages/Chats/Widgets/ChatBubble.dart';
+import 'package:aschatapp/pages/Chats/Widgets/Emoji.dart';
 import 'package:aschatapp/pages/Chats/Widgets/messageType.dart';
 import 'package:aschatapp/pages/UserProfile/Profile.dart';
 import 'package:aschatapp/pages/callPages/audioCallPage.dart';
 import 'package:aschatapp/pages/callPages/videoCallPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/foundation.dart' as foundation;
 
 class ChatPage extends StatelessWidget {
   final UserModel userModel;
@@ -25,6 +29,7 @@ class ChatPage extends StatelessWidget {
     ProfileController profileController=Get.put(ProfileController());
     CallController callController=Get.put(CallController());
     TextEditingController messageController=TextEditingController();
+    EmojiPickerController emojiPickerController =Get.put(EmojiPickerController());
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -188,21 +193,6 @@ class ChatPage extends StatelessWidget {
               ),
               MessageType(userModel: userModel,),
               
-
-              // SizedBox(
-              //   height: Get.height*.35,
-              //   child: EmojiPicker(
-              //     textEditingController: messageController,
-              //     config: Config(
-              //       emojiViewConfig: EmojiViewConfig(
-              //         emojiSizeMax: 28 *
-              //             (Platform.isIOS
-              //                 ? 1.20
-              //                 : 1.0),
-              //       ),
-              //     ),
-              //   ),
-              // )
             ],
           ),
         ),

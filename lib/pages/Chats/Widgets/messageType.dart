@@ -1,3 +1,4 @@
+import 'package:aschatapp/Controller/EmojiPickerController.dart';
 import 'package:aschatapp/Controller/chatController.dart';
 import 'package:aschatapp/Controller/imagePickerController.dart';
 import 'package:aschatapp/Model/userModel.dart';
@@ -9,15 +10,16 @@ import 'package:get/get.dart';
 
 class MessageType extends StatelessWidget {
   final UserModel userModel;
-  const MessageType({super.key, required this.userModel});
+  static final messageController = TextEditingController();
+  const MessageType({super.key, required this.userModel,});
 
   @override
   Widget build(BuildContext context) {
     ChatController chatController=Get.put(ChatController());
-    TextEditingController messageController=TextEditingController();
     ImagePickerController imagePickerController=Get.put(ImagePickerController());
     RxString message="".obs;
-    // RxBool _isEmoji=false.obs;
+    EmojiPickerController emojiPickerController =Get.put(EmojiPickerController());
+    
     return Container(
           margin:const EdgeInsets.all(10),
           padding:const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
@@ -28,13 +30,19 @@ class MessageType extends StatelessWidget {
             children: [
               InkWell(
                 onTap: (){
-                  // _isEmoji.value =! _isEmoji.value;
+                  emojiPickerController.isEmoji.value==true?
+                     emojiPickerController.setEmojiValue(false)
+                    :emojiPickerController.setEmojiValue(true);
+
+                    print(emojiPickerController.isEmoji.value);
                 },
                 child: const Icon(
                   Icons.emoji_emotions_outlined,
-                  color: Colors.white38,
-                )),
-             const SizedBox(width: 10,),
+                  color: Colors.blue,
+                )
+              ),
+              
+              SizedBox(width: 10,),
               Expanded(
                 child: TextField(
                   onChanged: (value){
