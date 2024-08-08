@@ -192,7 +192,10 @@ class ChatPage extends StatelessWidget {
                 ),
               ),
               MessageType(userModel: userModel,),
-              
+              Obx(()=>emojiPickerController.isEmoji.value ==true
+              ? EmojiPage()
+              : Container(),
+              )
             ],
           ),
         ),

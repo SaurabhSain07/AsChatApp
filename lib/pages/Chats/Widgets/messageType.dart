@@ -30,15 +30,11 @@ class MessageType extends StatelessWidget {
             children: [
               InkWell(
                 onTap: (){
-                  emojiPickerController.isEmoji.value==true?
-                     emojiPickerController.setEmojiValue(false)
-                    :emojiPickerController.setEmojiValue(true);
-
-                    print(emojiPickerController.isEmoji.value);
+                  emojiPickerController.isEmoji.value =! emojiPickerController.isEmoji.value;
                 },
-                child: const Icon(
+                child: Icon(
                   Icons.emoji_emotions_outlined,
-                  color: Colors.blue,
+                  color: Colors.grey[200],
                 )
               ),
               
@@ -47,6 +43,7 @@ class MessageType extends StatelessWidget {
                 child: TextField(
                   onChanged: (value){
                     message.value=value;
+                    messageController.value;
                   },
                   controller: messageController,
                   decoration:const InputDecoration(
@@ -68,7 +65,7 @@ class MessageType extends StatelessWidget {
                   child:const SizedBox(),
                 ),),
               const SizedBox(width: 10,),
-              Obx(() => message.value !="" || chatController.selectedImagePath.value!=""
+              Obx(() => message.value !="" || chatController.selectedImagePath.value!="" || messageController.value !=""
               ? InkWell(
                 onTap: () {
                   if (messageController.text.isNotEmpty ||
