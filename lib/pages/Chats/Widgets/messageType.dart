@@ -20,74 +20,86 @@ class MessageType extends StatelessWidget {
     RxString message="".obs;
     EmojiPickerController emojiPickerController =Get.put(EmojiPickerController());
     
-    return Container(
-          margin:const EdgeInsets.all(10),
-          padding:const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(100)),
-          child: Row(
-            children: [
-              InkWell(
-                onTap: (){
-                  emojiPickerController.isEmoji.value =! emojiPickerController.isEmoji.value;
-                },
-                child: Icon(
-                  Icons.emoji_emotions_outlined,
-                  color: Colors.grey[200],
-                )
-              ),
-              
-              SizedBox(width: 10,),
-              Expanded(
-                child: TextField(
-                  onChanged: (value){
-                    message.value=value;
-                    messageController.value;
-                  },
-                  controller: messageController,
-                  decoration:const InputDecoration(
-                    hintText: "Type message...",
-                    filled: false),
-                )
-                ),
-              const SizedBox(width: 10,),
-              Obx(() => chatController.selectedImagePath.value==""
-              ?InkWell(
-                onTap: () {
-                  imagePickerBottemSheet(context, chatController.selectedImagePath, imagePickerController);
-                },
-                child: SvgPicture.asset(AssetsImage.gallerySVG))
-                :InkWell(
+    return GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+      child: Container(
+            margin:const EdgeInsets.all(10),
+            padding:const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(100)),
+            child: Row(
+              children: [
+                InkWell(
                   onTap: (){
-                    chatController.selectedImagePath.value="";
+                    emojiPickerController.isEmoji.value =
+                        !emojiPickerController.isEmoji.value;
+                        FocusScope.of(context).unfocus();
                   },
-                  child:const SizedBox(),
-                ),),
-              const SizedBox(width: 10,),
-              Obx(() => message.value !="" || chatController.selectedImagePath.value!="" || messageController.value !=""
-              ? InkWell(
-                onTap: () {
-                  if (messageController.text.isNotEmpty ||
-                          chatController.selectedImagePath.value.isNotEmpty) {
-                        chatController.sendMessage(
-                            userModel.id!, messageController.text, userModel);
-                        messageController.clear();
-                        message.value = "";
-                      }
-                },
-                child: chatController.isLoading.value 
-                ?const CircularProgressIndicator()
-                :SvgPicture.asset(AssetsImage.sendSVG)
-              )  
-              : InkWell(
-                onTap: (){},
-                child: SvgPicture.asset(AssetsImage.micSVG))
-              
-             )
-            ],
-          )
-         );
+                  child: Icon(
+                    Icons.emoji_emotions_outlined,
+                    color: Colors.grey[200],
+                  )
+                ),
+                
+                SizedBox(width: 10,),
+                Expanded(
+                  child: TextField(
+                    onTap: () {
+                      emojiPickerController.isEmoji.value =
+                        !emojiPickerController.isEmoji.value;
+                    },
+                    onChanged: (value){
+                      message.value=value;
+                      messageController.value;
+                    },
+                    controller: messageController,
+                    decoration:const InputDecoration(
+                      hintText: "Type message...",
+                      filled: false),
+                  )
+                  ),
+                const SizedBox(width: 10,),
+                Obx(() => chatController.selectedImagePath.value==""
+                ?InkWell(
+                  onTap: () {
+                    imagePickerBottemSheet(
+                              context,
+                              chatController.selectedImagePath,
+                              imagePickerController);
+                  },
+                  child: SvgPicture.asset(AssetsImage.gallerySVG))
+                  :InkWell(
+                    onTap: (){
+                      chatController.selectedImagePath.value="";
+                    },
+                    child:const SizedBox(),
+                  ),),
+                const SizedBox(width: 10,),
+                Obx(() => message.value !="" || chatController.selectedImagePath.value!="" || messageController.value !=""
+                ? InkWell(
+                  onTap: () {
+                    if (messageController.text.isNotEmpty ||
+                            chatController.selectedImagePath.value.isNotEmpty) {
+                          chatController.sendMessage(
+                              userModel.id!, messageController.text, userModel);
+                          messageController.clear();
+                          message.value = "";
+                        }
+                  },
+                  child: chatController.isLoading.value 
+                  ?const CircularProgressIndicator()
+                  :SvgPicture.asset(AssetsImage.sendSVG)
+                )  
+                : InkWell(
+                  onTap: (){},
+                  child: SvgPicture.asset(AssetsImage.micSVG))
+                
+               )
+              ],
+            )
+           ),
+    );
   }
   
 }
