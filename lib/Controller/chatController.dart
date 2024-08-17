@@ -137,4 +137,27 @@ class ChatController extends GetxController{
             .map((doc) => CallModel.fromJson(doc.data()))
             .toList());
   } 
+ 
+//  delete message
+ Future<void> deleteMessage(String targetUserId) async {
+  try {
+    // Get the room ID based on the current and target user IDs
+    String roomId = getRoomId(targetUserId);
+    String chatId = uuid.v6();
+    // Delete the specific message from the Firestore collection
+    await db
+        .collection("chats")
+        .doc(roomId)
+        .collection("messages")
+        .doc(chatId)
+        .delete();
+    
+    // Optionally, update the last message in the room details if the deleted message was the last one
+    // You can implement additional logic to handle this scenario if needed.
+    
+  } catch (e) {
+    print("Error deleting message: $e");
+  }
+}
+ 
 }

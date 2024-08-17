@@ -112,7 +112,7 @@ class GroupChatPage extends StatelessWidget {
                               isComming: snapshot.data![index].senderId !=
                                   profileController.currentUser.value.id,
                               status: "read",
-                              time: formattedTime,
+                              time: formattedTime, 
                             );
                           },
                         );

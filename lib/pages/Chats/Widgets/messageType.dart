@@ -59,7 +59,7 @@ class MessageType extends StatelessWidget {
                 ),
               const SizedBox(width: 10,),
               Obx(() => chatController.selectedImagePath.value==""
-              ?InkWell(
+              ? InkWell(
                 onTap: () {
                   imagePickerBottemSheet(
                             context,

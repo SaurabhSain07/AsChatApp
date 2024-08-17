@@ -1,3 +1,6 @@
+import 'package:aschatapp/Controller/chatController.dart';
+import 'package:aschatapp/Controller/cloudRecordingController.dart';
+import 'package:aschatapp/Controller/profileController.dart';
 import 'package:aschatapp/Model/AudioCall.dart';
 import 'package:aschatapp/Model/userModel.dart';
 import 'package:aschatapp/pages/callPages/audioCallPage.dart';
@@ -14,6 +17,9 @@ class CallController extends GetxController {
   final db = FirebaseFirestore.instance;
   final auth = FirebaseAuth.instance;
   final uuid = Uuid().v4();
+  
+  ChatController chatController = Get.put(ChatController());
+  ProfileController profileController=Get.put(ProfileController());
   
   @override
   void onInit() {
@@ -139,14 +145,14 @@ class CallController extends GetxController {
       icon:const Icon(Icons.video_call),
       onTap: (snack) {
         Get.to(
-          LiveVideoStreaming(
+          VideoCallPage(
             target: UserModel(
                 id: callData.callerUid,
                 name: callData.callerName,
                 email: callData.callerEmail,
                 profileImage: callData.callerPic,
                 
-                ), isHost: callData.callerUid!,
+                ),
           ),
         );
         Get.back();

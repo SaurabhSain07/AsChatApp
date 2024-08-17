@@ -1,3 +1,6 @@
+import 'package:aschatapp/Controller/chatController.dart';
+import 'package:aschatapp/Controller/profileController.dart';
+import 'package:aschatapp/Model/userModel.dart';
 import 'package:aschatapp/configur/images.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -11,20 +14,26 @@ class ChatBubble extends StatelessWidget {
   final bool isComming;
   final String status;
   final String time;
+  final UserModel? userModel;
   const ChatBubble(
       {super.key,
       required this.message,
       required this.imageUrl,
       required this.isComming,
       required this.status,
-      required this.time});
+      required this.time, 
+      this.userModel, 
+      });
 
   @override
   Widget build(BuildContext context) {
+    ChatController chatController=Get.put(ChatController());
+    final UserModel userModel;
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Column(
-        crossAxisAlignment: isComming? CrossAxisAlignment.start: CrossAxisAlignment.end,
+        crossAxisAlignment:
+            isComming ? CrossAxisAlignment.start : CrossAxisAlignment.end,
         children: [
           Container(
             constraints: BoxConstraints(minWidth: 100, maxWidth: Get.width / 1.3),

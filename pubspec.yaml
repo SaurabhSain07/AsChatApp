@@ -55,6 +55,7 @@ dependencies:
   firebase_messaging: ^15.0.4
   zego_uikit_prebuilt_live_streaming: ^3.11.0
   emoji_picker_flutter: ^2.1.1
+  crypto: ^3.0.1
 
 dev_dependencies:
   flutter_test:

@@ -148,13 +148,66 @@ class ChatPage extends StatelessWidget {
                                 snapshot.data![index].timestamp!);
                             String formattedTime =
                                 DateFormat('hh:mm a').format(timestamp);
-                            return ChatBubble(
-                              message: snapshot.data![index].message!,
-                              imageUrl: snapshot.data![index].imageUrl ?? "",
-                              isComming: snapshot.data![index].receiverId ==
-                                  profileController.currentUser.value.id,
-                              status: "read",
-                              time: formattedTime,
+                            return GestureDetector(
+                              onLongPress: () {
+                                showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                backgroundColor: Colors.white,
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async{
+                        await chatController.deleteMessage(userModel.id!);
+                        Get.back();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white60
+                      ),
+                      child: const Text(
+                        "Delete for everyone",
+                        style: TextStyle(color: Colors.black, 
+                        fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        
+                        Get.back();
+                      },
+                        style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white60
+                      ),
+                      child: const Text("Delete for Me",
+                      style: TextStyle(color: Colors.black, 
+                        fontWeight: FontWeight.bold),),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white60
+                      ),
+                      child: const Text("Cancel",
+                      style: TextStyle(color: Colors.black, 
+                        fontWeight: FontWeight.bold),),
+                    ),
+                  ],
+                ),
+              );
+            });
+                              },
+                              child: ChatBubble(
+                                message: snapshot.data![index].message!,
+                                imageUrl: snapshot.data![index].imageUrl ?? "",
+                                isComming: snapshot.data![index].receiverId ==
+                                    profileController.currentUser.value.id,
+                                status: "read",
+                                time: formattedTime,
+                              ),
                             );
                           },
                         );
